@@ -4,6 +4,7 @@ from djangotoolbox.fields import ListField
 class Song(models.Model):
     name = models.CharField(max_length=100)
     artist_id = models.IntegerField(null=False)
+    data = models.FileField(upload_to="foo")
 
     def __unicode__(self):
         return self.name
