@@ -5,5 +5,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
-    (r'^facebook/', include('jamfu.facebook.urls')),
+    (r'^facebook/', include('facebook.urls')),
 )

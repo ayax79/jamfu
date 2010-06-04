@@ -16,7 +16,8 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
-    'jamfu.artist',
+    'artist',
+    'facebook',
 )
 
 if has_djangoappengine:
