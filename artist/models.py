@@ -39,7 +39,7 @@ class Artist(models.Model):
         return songs
 
 
-    def addSong(self, **kwArgs):
+    def add_song(self, **kwArgs):
         kwArgs['artist_id'] = self.id
         s = Song.objects.create(**kwArgs)
         self.song_ids.append(s.id)

@@ -27,3 +27,9 @@ MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 ROOT_URLCONF = 'urls'
+
+FACEBOOK_INFO = {
+    'key' : '32e800dec1c23f116038e0bc8641ee88',
+    'secret' : '8225f22b8c9e5fa3af75c0d85280adbb',
+    'app_id' : '119681858044432',
+}

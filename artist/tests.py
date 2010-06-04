@@ -13,11 +13,11 @@ class ArtistTestCase(TestCase):
     def setUp(self):
         self.zeppelin = Artist.objects.create(name="Led Zeppelin")
 
-    def testCreated(self):
+    def test_created(self):
         self.assertEquals(self.zeppelin.name, "Led Zeppelin")
         self.assertTrue(self.zeppelin.id > 0)
 
-    def testAddSongs(self):
+    def test_add_songs(self):
         name = "Over the Hills and Far Away"
         song = self.zeppelin.addSong(name=name)
         self.assertEquals(song.name, name)
@@ -32,11 +32,11 @@ class SongTestCase(TestCase):
     def setUp(self):
         self.modest_mouse = Artist.objects.create(name="Modest Mouse")
 
-    def testCreateSong(self):
+    def test_create_song(self):
         mm = Song.objects.create(name="Little Motel", artist_id=self.modest_mouse.id)
         self.assertTrue(mm)
 
-    def testCreateSongFail(self):
+    def test_create_song_Fail(self):
         try:
             Song.objects.create(name="Interstate 8")
         except DatabaseError:
