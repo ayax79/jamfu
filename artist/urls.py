@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns
 
-urlpatterns = patterns('facebook.views',
+urlpatterns = patterns('artist.views',
     (r'^$', 'index'),
 )

@@ -5,5 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
-    (r'^facebook/', include('facebook.urls')),
+    (r'^jamfu_facebook/', include('jamfu_facebook.urls')),
+    (r'^/', include('socialregistration.urls')),
+    (r'^/', include('artist.urls')),
 )

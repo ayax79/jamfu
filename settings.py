@@ -17,7 +17,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'artist',
-    'facebook',
+    'jamfu_facebook',
+    'socialregistration',
 )
 
 if has_djangoappengine:
@@ -29,8 +30,9 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 ROOT_URLCONF = 'urls'
 
-FACEBOOK_INFO = {
-    'key' : '32e800dec1c23f116038e0bc8641ee88',
-    'secret' : '8225f22b8c9e5fa3af75c0d85280adbb',
-    'app_id' : '119681858044432',
-}
+FACEBOOK_API_KEY='32e800dec1c23f116038e0bc8641ee88'
+FACEBOOK_SECRET_KEY='8225f22b8c9e5fa3af75c0d85280adbb'
+FACEBOOK_APP_ID='119681858044432'
+
+AUTHENTICATION_BACKENDS=('socialregistration.auth.FacebookAuth',)
+MIDDLEWARE_CLASSES=('socialregistration.middleware.FacebookMiddleware',)
