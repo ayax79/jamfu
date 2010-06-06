@@ -36,3 +36,5 @@ FACEBOOK_APP_ID='119681858044432'
 
 AUTHENTICATION_BACKENDS=('socialregistration.auth.FacebookAuth',)
 MIDDLEWARE_CLASSES=('socialregistration.middleware.FacebookMiddleware',)
+TEMPLATE_CONTEXT_PROCESSORS=('django.core.context_processors.request',
+                             'django.contrib.auth.context_processors.auth',)
