@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^jamfu_facebook/', include('jamfu_facebook.urls')),
     (r'^/', include('socialregistration.urls')),
-    (r'^/artists', include('artists.urls')),
+    (r'^artists/', include('artists.urls')),
 )
