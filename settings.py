@@ -16,7 +16,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.admin',
-    'artist',
+    'artists',
     'jamfu_facebook',
     'socialregistration',
 )
