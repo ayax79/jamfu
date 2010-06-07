@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<h1>Welcome to Jamfu</h1>
+<p>
+    Your site for doing something cool, that I am not going to explain.
+
+    {% load facebook_tags %}
+    {% facebook_button %}
+    {% facebook_js %}
+</p>
+{% endblock %}

@@ -12,14 +12,15 @@ import os
 SECRET_KEY = '=r-$b*8hglm+858&9t043hlm6-&6-3d3vfc4((7yd0dbrakhvi'
 
 INSTALLED_APPS = (
-'djangotoolbox',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.admin',
-'artists',
-'jamfu_facebook',
-'socialregistration',
+    'djangotoolbox',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.admin',
+    'artists',
+    'jamfu_facebook',
+    'socialregistration',
+    'main',
 )
 
 if has_djangoappengine:
@@ -45,11 +46,11 @@ MIDDLEWARE_CLASSES = (
     'socialregistration.middleware.FacebookMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS=(
-"django.contrib.auth.context_processors.auth",
-"django.core.context_processors.debug",
-"django.core.context_processors.i18n",
-"django.core.context_processors.media",
-"django.contrib.messages.context_processors.messages",
-'django.core.context_processors.request',
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.request',
 )
