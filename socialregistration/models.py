@@ -5,18 +5,27 @@ from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 
 
-class BaseExternalProfile(models.Model):
-    user_id = models.IntegerField()
-    site_id = models.IntegerField(default=Sites.objects.get_current.id)
-
-    def user(self):
-        return User.objects.get(id=self.user_id)
+class BaseSiteable(models.Model):
+    site_id = models.IntegerField(default=Site.objects.get_current)
 
     def site(self):
-        return Site.objects.get(id=self.site_id)
+        return Site.objects.get(pk=self.site_id)
+
+    @staticmethod
+    def current_site_id():
+        current_site = Site.objects.get_current()
+        if (current_site):
+            return current_site.id
 
 
-class FacebookProfile(BaseExternalProfile):
+class BaseExternalProfile(BaseSiteable):
+    user_id = models.IntegerField()
+
+    def user(self):
+        return User.objects.get(pk=self.user_id)
+
+
+class FacebookProfile(BaseSiteable):
 
     uid = models.CharField(max_length=255, blank=False, null=False)
     
@@ -44,8 +53,7 @@ class OpenIDProfile(BaseExternalProfile):
     def authenticate(self):
         return authenticate(identity=self.identity)
 
-class OpenIDStore(models.Model):
-    site_id = models.ForeignKey(Site, default=Site.objects.get_current.id)
+class OpenIDStore(BaseSiteable):
     server_url = models.CharField(max_length=255)
     handle = models.CharField(max_length=255)
     secret = models.TextField()
@@ -57,7 +65,7 @@ class OpenIDStore(models.Model):
         return u'OpenID Store %s for %s' % (self.server_url, self.site)
 
     def site(self):
-        return Site.objects.get(id=self.site_id)
+        return Site.objects.get(pk=self.site_id)
 
 class OpenIDNonce(models.Model):
     server_url = models.CharField(max_length=255)
