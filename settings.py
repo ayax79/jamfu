@@ -60,4 +60,9 @@ AUTH_EXCLUSION_PATHS = (
     '/facebook/',
 )
 
+if os.getenv("DJANGO_ENV") == 'development':
+    LOGIN_REDIRECT='http://localhost:8000/'
+else:
+    LOGIN_REDIRECT='http://jamfufu.appspot.com'
+
 SITE_ID=1
