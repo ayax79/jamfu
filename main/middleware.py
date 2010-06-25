@@ -12,7 +12,7 @@ class RequireLoginMiddleware(object):
     """
 
     def __init__(self):
-        self.require_login_path = getattr(settings, 'REQUIRE_LOGIN_PATH', '/login')
+        self.require_login_path = settings.REQUIRE_LOGIN_PATH 
         self.exclusions = settings.AUTH_EXCLUSION_PATHS
 
     def is_exclude_path(self, request):
@@ -23,12 +23,12 @@ class RequireLoginMiddleware(object):
         return False
 
     def is_ignored(self, request):
-        return ((request.path != self.require_login_path and
+        return ((request.path != self.require_login_path and not
                 request.user.is_anonymous) or
                 self.is_exclude_path(request))
 
     def process_request(self, request):
-        if request.path != self.require_login_path and not self.is_ignored(request):
+        if self.is_ignored(request):
             if request.POST:
                 return login(request)
             else:
