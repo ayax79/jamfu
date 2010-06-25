@@ -6,8 +6,8 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from artist.models import Artist, Song
 from django.db.utils import DatabaseError
+from artists.models import Artist, Song
 
 class ArtistTestCase(TestCase):
     def setUp(self):
@@ -19,7 +19,7 @@ class ArtistTestCase(TestCase):
 
     def test_add_songs(self):
         name = "Over the Hills and Far Away"
-        song = self.zeppelin.addSong(name=name)
+        song = self.zeppelin.add_song(name=name)
         self.assertEquals(song.name, name)
         self.assertTrue(song.id > 0)
         self.assertEquals(len(self.zeppelin.song_ids), 1)

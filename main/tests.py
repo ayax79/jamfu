@@ -6,18 +6,17 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from main.middleware import RequireLoginMiddleware
+from mock import Mock
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
+class MiddlewareTest(TestCase):
+    
+    def test_is_ignored_login_path(self):
         """
         Tests that 1 + 1 always equals 2.
         """
-        self.failUnlessEqual(1 + 1, 2)
+        req = Mock()
+        req.path = "/login"
 
-__test__ = {"doctest": """
-Another way to test that 1 + 1 is equal to 2.
-
->>> 1 + 1 == 2
-True
-"""}
-
+        mw = RequireLoginMiddleware()
+        self.assertTrue(mw.is_ignored(req))

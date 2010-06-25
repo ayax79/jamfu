@@ -44,7 +44,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'socialregistration.middleware.FacebookMiddleware',
-#    'main.middleware.RequireLoginMiddleware',
+    'main.middleware.RequireLoginMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -58,6 +58,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 AUTH_EXCLUSION_PATHS = (
     '/facebook/',
+    '/login'
 )
 
 if os.getenv("DJANGO_ENV") == 'development':
