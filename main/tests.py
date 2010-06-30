@@ -6,7 +6,7 @@ Replace these with more appropriate tests for your application.
 """
 
 from django.test import TestCase
-from main.middleware import RequireLoginMiddleware
+from main.middleware import RequireLoginMiddleware, settings
 from mock import Mock
 
 class RequireLoginMiddlewareTest(TestCase):
@@ -15,6 +15,7 @@ class RequireLoginMiddlewareTest(TestCase):
         self.mw = RequireLoginMiddleware()
         self.req = Mock()
         self.user = Mock()
+
 
     def test_excluded_false(self):
         """
@@ -29,7 +30,7 @@ class RequireLoginMiddlewareTest(TestCase):
         """
         self.req.path = "/facebook/sdlfkjdsf"
         self.assertTrue(self.mw.is_exclude_path(self.req))
-    
+
     def test_is_ignored_login_path(self):
         """
         Tests that "/login" is ignored

@@ -58,8 +58,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 AUTH_EXCLUSION_PATHS = (
     '/facebook/',
-    '/login'
 )
+
+REQUIRE_LOGIN_PATH = "/login"
 
 if os.getenv("DJANGO_ENV") == 'development':
     LOGIN_REDIRECT='http://localhost:8000/'
